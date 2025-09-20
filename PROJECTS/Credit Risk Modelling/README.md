@@ -1,18 +1,27 @@
 # Credit Risk Modelling
 
-This project applies credit risk measurement techniques to assess default probabilities and portfolio exposures.  
+This project applies quantitative credit risk models to evaluate default probabilities, loss distributions, and bond investment suitability for a peer group of corporates.  
 
-## Key Components
-- **Default Risk Models:** Implemented Altman Z-score and Merton structural model in Excel to estimate firm-level creditworthiness.  
-- **PD, LGD, EAD Estimation:** Applied probability of default, loss given default, and exposure at default metrics under Basel III / IFRS 9 context.  
-- **Stress Testing:** Conducted scenario and sensitivity analysis to evaluate the impact of adverse shocks on solvency and coverage ratios.  
-- **Variance & Ratio Analysis:** Linked outputs to structured portfolio performance reports, aligning results with sector benchmarks.  
+## Technical Scope
+- **Financial Statement Analysis:** Extracted leverage, liquidity, and coverage ratios for peer firms and benchmarked against sector medians.  
+- **Altman Z-Score:** Implemented in Excel to derive solvency indicators, highlighting relative default likelihood.  
+- **Merton Structural Model:** Built in Excel (with VBA macros) to estimate firm-level probability of default (PD) using equity volatility and capital structure inputs. Integrated stress testing of volatility and debt levels to simulate shifts in creditworthiness under adverse scenarios.  
+- **Ratings Transition Analysis:** Constructed a transition matrix in Excel to model migration probabilities across rating categories, consistent with Basel III requirements.  
+- **CreditMetrics Framework:** Applied portfolio-level credit risk assessment by combining transition probabilities, exposure at default (EAD), and loss given default (LGD) to generate loss distribution estimates.  
+- **Simulation & Sensitivity:** Used Monte Carlo techniques (via Excel/VBA and R) to simulate correlated defaults, scenario shocks, and portfolio value-at-risk (Credit VaR) at multiple confidence levels.  
+- **Reporting & Automation:** Structured outputs into a credit report and Quarto-generated analytics summary, linking model outputs to sector-level investment recommendations.  
+
+## Tools & Technologies
+- **Excel / VBA:** Primary modelling environment for Altman Z and Merton structural frameworks, risk scenario automation.  
+- **R & Quarto:** Used for loss distribution simulations, CreditMetrics portfolio analysis, and automated report generation.  
+- **Monte Carlo Simulation Engines:** Applied for portfolio VaR estimation under correlated credit migrations.  
 
 ## Files
-- `Altman_Z_Model.xlsx`  
-- `Merton_Model.xlsx`  
-- `Stress_Testing.xlsx`  
-- `Credit_Risk_Report.pdf`  
+- `Credit Report Mock Up.docx` – structured credit risk report  
+- `Altman Z Score.xlsx` – solvency model (Excel)  
+- `Merton Model.xlsm` – structural PD model with embedded stress testing  
+- `HTML Presentation.html` – executive summary of results  
 
 ---
-This work aligns with experience described in my CV, demonstrating applied knowledge of risk metrics, covenant monitoring, and stress testing for financial oversight.
+
+This project demonstrates applied use of **Altman Z, Merton structural modelling, transition matrices, and CreditMetrics portfolio techniques** with **Excel, VBA, R, and Monte Carlo simulation** — aligning with industry standards for credit risk assessment under **Basel III / IFRS 9**.
