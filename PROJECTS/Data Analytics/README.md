@@ -1,29 +1,22 @@
-# Data Analytics – Econometric Modelling
+# Data Analytics
 
-This project investigates the **foreign exchange exposure of Hikma Pharmaceuticals (LSE: HIK)** using advanced econometric and time series methods, combining R scripting, Quarto reporting, and Bloomberg data.
+This section applies econometric and time series methods to financial data, combining regression modelling, volatility forecasting, and structural break analysis in R with Quarto-based reporting.
 
-## Scope
-- Analysed ~2,500 daily observations (2014–2024) of Hikma’s stock, FTSE 100, and major FX pairs (USD, EUR, CHF, SAR, JOD, EGP, CNY vs GBP).  
-- Measured stock excess returns under **CAPM and multi-factor FX risk models**, accounting for **structural breaks** (Brexit, COVID-19).  
+## Econometric Modelling
+- Multi-factor regressions extending CAPM with currency exposures.  
+- Diagnostics: Breusch–Pagan (heteroscedasticity), Durbin–Watson and Breusch–Godfrey (autocorrelation), Ramsey RESET, Jarque–Bera, VIF (multicollinearity), Cook’s Distance.  
+- Structural break tests using Chow and time-dummy models.  
+- Regularisation with Ridge regression to improve model stability.  
+- Tools: R (`car`, `lmtest`, `sandwich`, `strucchange`, `glmnet`).  
 
-## Methods
-- **Regression Models:** OLS, robust regression (HC SE), polynomial terms, Ridge regression, time-dummy models.  
-- **Diagnostics:** Breusch–Pagan, Jarque–Bera, RESET, Durbin–Watson, Breusch–Godfrey, VIF, Cook’s Distance, Chow Test.  
-- **Evaluation:** R², Adjusted R², AIC/BIC, MSE across competing models.  
+## Time Series & Risk Modelling
+- Forecasting with ARIMA, ETS, SMA/WMA smoothing, including residual checks and accuracy metrics (RMSE, MAE, AIC/BIC).  
+- Volatility modelling with GARCH-family processes.  
+- VAR/VECM for spillovers and Johansen cointegration for long-run dynamics.  
+- Machine learning benchmarks using reinforcement learning and SVR.  
+- Tools: R (`forecast`, `rugarch`, `urca`, `ggplot2`, `caret`), Quarto for reproducible reporting.  
 
-## Tools
-- **R Packages:** `lm`, `car`, `lmtest`, `sandwich`, `strucchange`, `moments`, `caret`, `glmnet`, `MASS`, `ggplot2`, `gridExtra`.  
-- **Quarto:** Reproducible analytics with integrated code, plots, and diagnostics.  
-- **Bloomberg / Excel:** Data extraction, validation, and supplementary checks.  
-
-## Results
-- CAPM market factor was statistically significant in explaining Hikma returns.  
-- FX exposures varied; JOD/GBP and EGP/GBP were significant, USD/GBP was not.  
-- Robust time-dummy model delivered **Adjusted R² ≈ 0.66**, outperforming baseline OLS and Ridge.  
-- Structural break tests confirmed shifts in risk exposures post-Brexit and COVID-19.  
-
-## Deliverables
-- `Econometric Modelling.R` – complete modelling workflow in R.  
-- `Econometric Modelling Report.pdf` – detailed analysis and interpretation.  
-- `FIN7028.qmd` / `.html` – Quarto automated report with code and outputs.  
-
+## Files
+- `Econometric Modelling.R` – econometric regression workflow.  
+- `Econometric Modelling Report.pdf` – detailed econometric analysis.  
+- `Time Series & Risk Modelling QUARTO` – Quarto source for forecasting and volatility modelling.  
