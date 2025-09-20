@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Global Retail Credit Analysis (2019–2024)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+    .slide {
+      width: 960px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 2em;
+      box-sizing: border-box;
+      page-break-after: always;
+    }
+    h2 {
+      margin-top: 0;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1em 0;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f1f1f1;
+    }
+    .speaker-notes {
+      margin-top: 1em;
+      padding: 0.8em;
+      background-color: #fafafa;
+      border-left: 4px solid #ccc;
+      font-size: 0.9em;
+    }
+    .section-title {
+      margin-bottom: 0.5em;
+      border-bottom: 2px solid #ccc;
+      display: inline-block;
+      padding-bottom: 0.2em;
+    }
+    /* Simple color classes for heatmap */
+    .heatmap-high {
+      background-color: #c9f7c1; /* light green */
+    }
+    .heatmap-medium {
+      background-color: #fff9c4; /* pale yellow */
+    }
+    .heatmap-low {
+      background-color: #ffcfcf; /* light red/pink */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SLIDE 1 -->
+  <div class="slide">
+    <h2 class="section-title">SLIDE 1: Title &amp; Scope</h2>
+    <table>
+      <tr><th>Title</th><td>Global Retail Credit Analysis (2019–2024)</td></tr>
+      <tr><th>Retailers</th><td>Walmart, Costco, Alibaba, Carrefour, Magazine Luiza</td></tr>
+      <!-- Removed “Headings (CRM)” row as per instructions -->
+      <tr><th>Key Parameters</th>
+        <td>
+          - Altman Z &amp; Merton Model<br>
+          - DuPont &amp; Standard Retail Metrics (debt, margins, WC)<br>
+          - Mature vs. Volatile Markets
+        </td>
+      </tr>
+    </table>
+
+    <div class="speaker-notes">
+      <p><strong>1. Purpose &amp; Coverage</strong><br>
+      - We compare five global retailers—Walmart and Costco (US), Alibaba (China), Carrefour (Europe + partial LatAm), and Magazine Luiza (Brazil)—spanning 2019–2024.<br>
+      - This timeframe captures pre-/post-pandemic changes, e-commerce surges, interest rate hikes, and the shift toward omnichannel retailing.<br>
+      - We use Altman Z-Scores (structural solvency) plus Merton Distance to Default (market-driven default probability) to see how stable vs. emerging markets shape credit risk.
+      </p>
+      <p><strong>2. Why These Metrics</strong><br>
+      - As credit analysts, we look at working capital usage, debt/EBITDA norms, margin stability, and each region’s macro environment.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 2 -->
+  <div class="slide">
+    <h2 class="section-title">SLIDE 2: General Information &amp; Political/Economic Environment</h2>
+    <table>
+      <tr>
+        <th>Firm</th>
+        <th>Revenue</th>
+        <th>Employees</th>
+        <th>Credit Ratings</th>
+        <th>Key Economic Context</th>
+      </tr>
+      <tr>
+        <td>Walmart (US)</td>
+        <td>$648.1B</td>
+        <td>2.1M</td>
+        <td>Moody’s Aa2 / S&amp;P AA</td>
+        <td>Stable US but labor inflation, invests heavily in AI</td>
+      </tr>
+      <tr>
+        <td>Costco (US)</td>
+        <td>$254.5B</td>
+        <td>328K</td>
+        <td>Moody’s A1 / S&amp;P A+</td>
+        <td>US-based, expanding to Asia/EU, membership model</td>
+      </tr>
+      <tr>
+        <td>Alibaba (China)</td>
+        <td>$134.5B</td>
+        <td>228K</td>
+        <td>Moody’s A1 / S&amp;P A+</td>
+        <td>Regulatory clampdown, US–China tensions in e-commerce</td>
+      </tr>
+      <tr>
+        <td>Carrefour (EU/LA)</td>
+        <td>$90.1B</td>
+        <td>319K</td>
+        <td>Moody’s Baa1 / S&amp;P BBB</td>
+        <td>Low EU growth, discount store wars, partial LatAm ops</td>
+      </tr>
+      <tr>
+        <td>Mag. Luiza (BR)</td>
+        <td>$6.9B</td>
+        <td>41K</td>
+        <td>Fitch BB- / Moody’s Ba3</td>
+        <td>High interest (13.75%), inflation, currency volatility</td>
+      </tr>
+    </table>
+
+    <div class="speaker-notes">
+      <p><strong>1. Economic Background</strong><br>
+      - Walmart &amp; Costco operate in the US: relatively stable, albeit rising labor costs and fierce competition from Amazon.<br>
+      - Alibaba contends with China’s regulatory environment (data privacy, fintech oversight) plus geopolitical tensions.<br>
+      - Carrefour in Europe faces low consumer spending growth and discount store competition, tries offsetting it via Latin America expansions.<br>
+      - Magazine Luiza in Brazil benefits from digital adoption, but 13.75% interest rates inflate borrowing costs significantly.</p>
+      <p><strong>2. Convergence/Divergence from Ratings?</strong><br>
+      - Both US firms (Walmart/Costco) hold high ratings (AA / A+), aligned with stable macro conditions and strong domestic demand.<br>
+      - Alibaba: A+ rating partially reflects large scale &amp; liquidity, but local regulatory pressure could diverge from rating agencies’ optimism if those clampdowns worsen.<br>
+      - Carrefour: BBB rating suggests moderate caution in line with Europe’s maturity.<br>
+      - Mag. Luiza: BB- rating converges with Brazil’s volatile macro; high interest rates hamper expansions, thus justifying a speculative grade.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 -->
+  <div class="slide">
+    <h2 class="section-title">SLIDE 3: Industry &amp; Competitive Positioning</h2>
+    <table>
+      <tr><th>Key Driver</th><th>Examples / Market Growth</th></tr>
+      <tr>
+        <td>Omnichannel &amp; E-commerce</td>
+        <td>Walmart invests $9B in AI, Mag. Luiza’s digital pivot, Alibaba’s ecosystem<br>Global e-commerce growth ~15–20% (emerging), ~10–15% (mature)</td>
+      </tr>
+      <tr>
+        <td>Membership &amp; Scale</td>
+        <td>Costco’s loyalty revenue, Walmart’s $648B scale, Carrefour’s cost-reduction in mature Europe</td>
+      </tr>
+      <tr>
+        <td>Market Growth &amp; Competition</td>
+        <td>Alibaba vs JD.com &amp; Pinduoduo (China ~5–7% retail growth), Carrefour vs discount (~1–2% EU growth), Mag. Luiza vs MercadoLibre (~3–4% Brazil retail growth)</td>
+      </tr>
+    </table>
+
+    <div class="speaker-notes">
+      <p><strong>1. Comparative Industry Overview</strong><br>
+      - Walmart: Largest retailer by revenue (~$648B). Scale advantage fosters lower unit costs but demands capital to remain tech-competitive.<br>
+      - Costco: Membership-driven revenue confers stable income, supporting credit strength. E-commerce is smaller but growing.<br>
+      - Alibaba: E-commerce + cloud in China, stiff local rivalry, with historically high margins (though falling).<br>
+      - Carrefour: Big in a “mature, low-growth” Europe market. Digital efforts lag behind pure-play e-commerce leaders.<br>
+      - Magazine Luiza: Rapid digital expansions in Brazil, financed with debt, raising risk in a high-rate environment.</p>
+      <p><strong>2. Why These Five?</strong><br>
+      - We wanted to see if volatile markets (China, Brazil) produce bigger divergences between actual performance and credit ratings vs. stable US/EU players.<br>
+      - Also, to highlight how omnichannel or membership models affect credit metrics (Costco, Walmart) versus pure e-commerce (Alibaba, Mag. Luiza).</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 3B (rewritten to directly answer the hypothesis) -->
+  <div class="slide">
+    <h2 class="section-title">SLIDE 3B: Volatility vs. Stability — Hypothesis Outcome</h2>
+    <table>
+      <tr>
+        <th>Company</th>
+        <th>Market Type</th>
+        <th>Credit Rating vs. Actual Performance</th>
+        <th>Membership/Omnichannel?</th>
+        <th>Hypothesis Reflection</th>
+      </tr>
+      <tr>
+        <td>Walmart</td>
+        <td>Stable (US)</td>
+        <td>AA rating, strong structural metrics &amp; consistent synergy</td>
+        <td>Omnichannel<br>(Significant investments in e-comm)</td>
+        <td>Minimal divergence – stable market, rating aligns with robust performance</td>
+      </tr>
+      <tr>
+        <td>Costco</td>
+        <td>Stable (US)</td>
+        <td>A+ rating, excellent DuPont, high ROE &amp; membership model</td>
+        <td>Membership-driven<br>(Physical + online growth)</td>
+        <td>No major mismatch – membership resilience underpins rating</td>
+      </tr>
+      <tr>
+        <td>Alibaba</td>
+        <td>Volatile (China)</td>
+        <td>A+ rating but Altman dipped to 2.80, some regulatory risk</td>
+        <td>E-commerce + Cloud<br>(Pure online ecosystem)</td>
+        <td>Moderate divergence – brand scale &amp; liquidity overshadow lower structural signals</td>
+      </tr>
+      <tr>
+        <td>Carrefour</td>
+        <td>Moderate (EU + LatAm)</td>
+        <td>BBB rating, borderline Altman yet decent short-term coverage</td>
+        <td>Primarily physical hypermarket,<br> limited digital transformation</td>
+        <td>Partial mismatch – stable near-term but structurally weaker, rating stands in moderate zone</td>
+      </tr>
+      <tr>
+        <td>Mag. Luiza</td>
+        <td>Volatile (Brazil)</td>
+        <td>BB-, distressed structural signals &amp; high interest burden</td>
+        <td>E-commerce pivot<br>(Heavily debt-financed growth)</td>
+        <td>Significant divergence – actual performance (near-distress) strongly matches speculative rating</td>
+      </tr>
+    </table>
+    <div class="speaker-notes">
+      <p>
+        This table addresses our hypothesis: Volatile markets (China, Brazil) often show bigger rating-performance gaps. 
+        Alibaba has some mismatch (strong rating vs declining Altman). Magazine Luiza’s distressed numbers do match a low rating, 
+        reinforcing high volatility’s risk. Meanwhile, stable US players like Walmart and Costco exhibit minimal divergences. 
+        Carrefour is semi-stable in Europe, bridging both sides with a moderate rating (BBB).
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 4 -->
+  <div class="slide">
+    <h2 class="section-title">SLIDE 4: Ownership &amp; Governance</h2>
+    <table>
+      <tr>
+        <th>Company</th>
+        <th>Ownership</th>
+        <th>CEO</th>
+        <th>Governance Focus</th>
+      </tr>
+      <tr>
+        <td>Walmart</td>
+        <td>Walton ~46%</td>
+        <td>Doug McMillon</td>
+        <td>ESG, independent board, scale synergy</td>
+      </tr>
+      <tr>
+        <td>Costco</td>
+        <td>Publicly traded</td>
+        <td>Craig Jelinek</td>
+        <td>Transparent board, membership-driven</td>
+      </tr>
+      <tr>
+        <td>Alibaba</td>
+        <td>Partnership model</td>
+        <td>Daniel Zhang</td>
+        <td>High innovation, intense regulatory look</td>
+      </tr>
+      <tr>
+        <td>Carrefour</td>
+        <td>Public, diverse</td>
+        <td>Alexandre Bompard</td>
+        <td>Cost discipline, multi-region oversight</td>
+      </tr>
+      <tr>
+        <td>Mag. Luiza</td>
+        <td>Family influence</td>
+        <td>Frederico Trajano</td>
+        <td>Strong digital push, high leverage</td>
+      </tr>
+    </table>
+
+    <div class="speaker-notes">
+      <p><strong>1. Governance Observations</strong><br>
+      - Walmart: Family ownership fosters strategic consistency but raises questions about minority influence. Credited with strong ESG.<br>
+      - Costco: Standard US governance; membership accountability fosters stable performance.<br>
+      - Alibaba: Partnership structure can expedite decisions but faces Chinese state constraints.<br>
+      - Carrefour: Cross-national oversight is complex, margin improvement strategies crucial.<br>
+      - Magazine Luiza: Founder/family leadership spurred rapid digital transformations, but big leverage calls into question risk oversight.</p>
+
+      <p><strong>2. Justification &amp; Rating Reflection</strong><br>
+      - Walmart: Large ESG push and scale synergy align with its high rating (AA).<br>
+      - Costco: Transparent board fosters consistent profitability, matching A+ rating.<br>
+      - Alibaba: Intangible partnership governance might diverge from A+ rating if regulatory clampdowns intensify.<br>
+      - Carrefour: Multi-national complexity partly justifies BBB rating (moderate risk).<br>
+      - Mag. Luiza: Family leadership with high leverage is riskier, matching BB- profile.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 5 -->
+  <div class="slide">
+    <h2 class="section-title">SLIDE 5: Profitability Metrics &amp; DuPont</h2>
+    <table>
+      <tr>
+        <th>Firm</th>
+        <th>Net Margin</th>
+        <th>EBITDA Margin</th>
+        <th>Operating Margin</th>
+        <th>ROE</th>
+        <th>Asset Turnover</th>
+        <th>DuPont Insights</th>
+      </tr>
+      <tr>
+        <td>Walmart</td>
+        <td>2.4%</td>
+        <td>6.0%</td>
+        <td>5.6%</td>
+        <td>17.2%</td>
+        <td>1.4</td>
+        <td>Scale-based approach, invests $9B in AI/e-comm. Balanced synergy</td>
+      </tr>
+      <tr>
+        <td>Costco</td>
+        <td>2.5%</td>
+        <td>8.6%</td>
+        <td>6.3%</td>
+        <td>26.4%</td>
+        <td>2.3</td>
+        <td>Lower margin but high turnover. Membership = stable recurring rev.</td>
+      </tr>
+      <tr>
+        <td>Alibaba</td>
+        <td>13.6%</td>
+        <td>19.5%</td>
+        <td>16.2%</td>
+        <td>12.8%</td>
+        <td>0.6</td>
+        <td>Large e-comm margin. Slowed from 18.5% net in 2019. Cloud invests</td>
+      </tr>
+      <tr>
+        <td>Carrefour</td>
+        <td>1.2%</td>
+        <td>4.2%</td>
+        <td>2.9%</td>
+        <td>9.5%</td>
+        <td>1.2</td>
+        <td>Price wars in EU. Thinner margin means risk if cost spikes.</td>
+      </tr>
+      <tr>
+        <td>Mag. Luiza</td>
+        <td>0.6%</td>
+        <td>4.7%</td>
+        <td>2.4%</td>
+        <td>3.8%</td>
+        <td>1.8</td>
+        <td>Digital growth overshadowed by finance costs. Aggressive expansions</td>
+      </tr>
+    </table>
+
+    <div class="speaker-notes">
+      <p><strong>1. Profitability &amp; Efficiency</strong><br>
+      - Alibaba: Remarkably high margins vs. typical low-margin retail. But net margin fell from ~18.5% in 2019 to 13.6% (2024) amid regulatory fines, local competition.<br>
+      - Costco: Lean cost structure + membership turnover → top ROE (26.4%). This synergy supports consistent credit performance, converging with A+ rating.<br>
+      - Walmart: 2.4% net margin is standard for a broadline retailer, invests heavily to remain e-commerce-competitive. ROE ~17.2% consistent with scale advantage.<br>
+      - Carrefour &amp; Mag. Luiza: Both sub-2% net margin. Their lower profitability indicates vulnerability to margin shocks, partly explaining lower ratings (BBB, BB-).</p>
+
+      <p><strong>2. DuPont Justifications</strong><br>
+      - Costco merges high asset turnover (~2.3) with moderate equity multiplier =&gt; best ROE in the group, aligning with rating agencies’ positivity.<br>
+      - Alibaba has strong net margin but a meager asset turnover (0.6). Mismatch yields ~12.8% ROE, reflecting intangible cloud assets.<br>
+      - <strong>Walmart</strong>: Balanced synergy of moderate asset turnover (1.4) and scale-based margin. ROE near 17% → stable, supporting AA rating.<br>
+      - <strong>Carrefour</strong>: Lower margin + moderate asset turnover (1.2) hamper ROE (~9.5%), consistent with a BBB rating that acknowledges modest returns in a mature market.<br>
+      - Mag. Luiza’s decent turnover (1.8) is offset by tiny margin (0.6%), weakening returns and credit stance.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 6 -->
+  <div class="slide">
+    <h2 class="section-title">SLIDE 6: Liquidity &amp; Solvency</h2>
+    <table>
+      <tr>
+        <th>Company</th>
+        <th>Current Ratio</th>
+        <th>Debt/EBITDA</th>
+        <th>Interest Coverage</th>
+        <th>Risk Observations</th>
+      </tr>
+      <tr>
+        <td>Walmart</td>
+        <td>~0.83</td>
+        <td>1.7x</td>
+        <td>8.5x</td>
+        <td>Low WC cycle, strong FCF; consistent w/ AA rating</td>
+      </tr>
+      <tr>
+        <td>Costco</td>
+        <td>~1.05</td>
+        <td>1.4x</td>
+        <td>11x</td>
+        <td>Membership resiliency; A+ rating validated by minimal leverage</td>
+      </tr>
+      <tr>
+        <td>Alibaba</td>
+        <td>~2.1</td>
+        <td>1.4x</td>
+        <td>10x</td>
+        <td>High liquidity from e-commerce; rating A+ remains plausible amid regulatory vigilance</td>
+      </tr>
+      <tr>
+        <td>Carrefour</td>
+        <td>~0.92</td>
+        <td>2.5x</td>
+        <td>3.8x</td>
+        <td>Heavier debt, borderline coverage =&gt; aligns w/ BBB moderate risk</td>
+      </tr>
+      <tr>
+        <td>Mag. Luiza</td>
+        <td>~1.2</td>
+        <td>3.6x</td>
+        <td>1.2x</td>
+        <td>Over-leveraged expansions, suits BB- rating (speculative)</td>
+      </tr>
+    </table>
+
+    <div class="speaker-notes">
+      <p><strong>1. Liquidity</strong><br>
+      - Alibaba: ~2.1 CR indicates ample short-term coverage. Converges with A+ rating.<br>
+      - Walmart &amp; Costco: Lower CR but quick turnover → consistent with high ratings, reflecting stable cash flows.<br>
+      - Carrefour &amp; Mag. Luiza: Near or below 1.0 CR, reliant on short-term financing. Heightens vulnerability if market conditions tighten, supporting BBB or BB- stances.</p>
+      <p><strong>2. Solvency</strong><br>
+      - Walmart/Costco/Alibaba maintain modest Debt/EBITDA (1.4–1.7) and robust coverage (8.5x–11x–10x), aligning with AA/A+ ratings.<br>
+      - Carrefour (2.5x, coverage 3.8x) and Mag. Luiza (3.6x, 1.2x) reflect higher leverage and weaker coverage. Lower margins intensify default risk, explaining BBB or BB-.</p>
+      <p><strong>3. Convergence/Divergence</strong><br>
+      - <strong>Walmart</strong>: Clearly convergent; stable leverage, high coverage → AA is justified.<br>
+      - <strong>Costco</strong>: Minimal leverage risk, membership synergy → A+ is consistent.<br>
+      - <strong>Alibaba</strong>: Impressive liquidity helps sustain A+, despite potential regulatory drag.<br>
+      - <strong>Carrefour</strong>: Weaker structural metrics but short-term coverage → BBB stands.<br>
+      - <strong>Mag. Luiza</strong>: Overexposed to high-rate environment → synergy with BB- (speculative) outlook.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 7 -->
+  <div class="slide">
+    <h2 class="section-title">SLIDE 7: Altman Z-Scores &amp; Merton (Distance to Default)</h2>
+    <table>
+      <tr>
+        <th>Firm</th>
+        <th>Altman Z</th>
+        <th>Merton DD</th>
+        <th>Risk Level</th>
+        <th>Convergence w/ Rating</th>
+      </tr>
+      <tr>
+        <td>Walmart</td>
+        <td>5.16</td>
+        <td>13.09</td>
+        <td>Low</td>
+        <td>Solid structural (Z≥4) &amp; near 0% short-term default =&gt; strong AA</td>
+      </tr>
+      <tr>
+        <td>Costco</td>
+        <td>9.64</td>
+        <td>15.23</td>
+        <td>Very Low</td>
+        <td>Exceptional Z &amp; Distance =&gt; minimal default =&gt; aligns w/ A+</td>
+      </tr>
+      <tr>
+        <td>Alibaba</td>
+        <td>2.80</td>
+        <td>4.75</td>
+        <td>Moderate</td>
+        <td>Z indicates caution, Merton moderate =&gt; rating agencies highlight brand &amp; liquidity</td>
+      </tr>
+      <tr>
+        <td>Carrefour</td>
+        <td>1.91</td>
+        <td>4.58</td>
+        <td>Moderate</td>
+        <td>Distress zone structurally, but near-term coverage =&gt; moderate BBB</td>
+      </tr>
+      <tr>
+        <td>Mag. Luiza</td>
+        <td>1.42</td>
+        <td>2.12</td>
+        <td>High</td>
+        <td>Short distance to default; strongly matches BB- speculation</td>
+      </tr>
+    </table>
+
+    <div class="speaker-notes">
+      <p><strong>1. Altman Z</strong><br>
+      - Costco (9.64) &amp; Walmart (5.16) => above safe threshold. Converges strongly with top-tier ratings.<br>
+      - Alibaba (2.80) => dropped from ~5.52. Diverges from A+ if focusing purely on structural solvency; intangible brand &amp; liquidity matter.<br>
+      - Carrefour (1.91) => near distress zone altman, but short-term coverage helps hold BBB.<br>
+      - Mag. Luiza (1.42) => in distress territory, consistent with BB- speculation.</p>
+      <p><strong>2. Merton (Distance to Default)</strong><br>
+      - Costco &amp; Walmart: ~15.23, ~13.09 => near-zero default risk. Reaffirms high ratings.<br>
+      - Alibaba: ~4.75 => moderate risk, rating stands due to intangible brand power and strong liquidity.<br>
+      - Carrefour: ~4.58 => near-zero immediate default, bridging altman’s negativity.<br>
+      - Mag. Luiza: ~2.12 => short distance to default, reflecting high-risk posture under BB-.</p>
+      <p><strong>3. Key Convergences</strong><br>
+      - <strong>Walmart &amp; Costco</strong>: Both Z and Merton are high => direct alignment with AA/A+.<br>
+      - <strong>Alibaba</strong>: Some tension between a moderate Z vs. rating, but brand &amp; liquidity keep it afloat.<br>
+      - <strong>Carrefour</strong>: Distress altman vs. near-zero immediate default => stays in moderate BBB zone.<br>
+      - <strong>Mag. Luiza</strong>: Altman &amp; Merton both show high distress => matches BB- rating.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 8 -->
+  <div class="slide">
+    <h2 class="section-title">SLIDE 8: Market Perception, Cash Flow &amp; Industry Norms</h2>
+    <table>
+      <tr>
+        <th>Company</th>
+        <th>OCF (Avg)</th>
+        <th>Bond Spreads / Yields</th>
+        <th>Industry Norms</th>
+        <th>Co. Performance vs Norm</th>
+        <th>Rating Conclusion</th>
+      </tr>
+      <tr>
+        <td>Walmart</td>
+        <td>$36.1B</td>
+        <td>Favorable (AA)</td>
+        <td>Debt/EBITDA ~1–2x,<br> Net margin ~2–5%</td>
+        <td>Within the normal range, stable margins</td>
+        <td>Aligned with strong FCF</td>
+      </tr>
+      <tr>
+        <td>Costco</td>
+        <td>$6.1B</td>
+        <td>Minimal (A+)</td>
+        <td>Lean ops but stable membership</td>
+        <td>Often surpasses margin &amp; turnover norms</td>
+        <td>Positive membership synergy</td>
+      </tr>
+      <tr>
+        <td>Alibaba</td>
+        <td>$29B</td>
+        <td>Lower yields (A+)</td>
+        <td>E-comm margin can exceed 10%</td>
+        <td>Exceeds typical margins, intangible brand</td>
+        <td>Watchful of regulatory environment</td>
+      </tr>
+      <tr>
+        <td>Carrefour</td>
+        <td>$2.37B</td>
+        <td>Wider (BBB)</td>
+        <td>Margins ~1–2% in EU discount wars</td>
+        <td>Under normal margin/leverage standard</td>
+        <td>Near-term liquidity helps moderate risk</td>
+      </tr>
+      <tr>
+        <td>Mag. Luiza</td>
+        <td>Negative/low</td>
+        <td>High (BB-)</td>
+        <td>Leverage above 3x is risky,<br> net margin &lt;2%</td>
+        <td>Below healthy thresholds</td>
+        <td>Speculative grade under high interest</td>
+      </tr>
+    </table>
+
+    <div class="speaker-notes">
+      <p><strong>1. Credit Ratings vs. Market</strong><br>
+      - Walmart &amp; Costco see tight bond spreads, consistent with stable OCF and proven retail models.<br>
+      - Alibaba trades at lower yields than a mid-level altman might suggest—investors prize brand scale &amp; liquidity.<br>
+      - Carrefour’s wider spreads reflect caution around EU discount battles, but short-term coverage sustains BBB.<br>
+      - Mag. Luiza sees high yields, aligning with near-distress risk.</p>
+      <p><strong>2. Cash Flow</strong><br>
+      - Walmart invests heavily in technology; consistent FCF underpins stable rating.<br>
+      - Alibaba’s strong e-commerce OCF partially offset by regulatory fines and intangible expansions.<br>
+      - Costco’s membership-based approach ensures stable OCF, though margins can be narrower.<br>
+      - Carrefour &amp; Mag. Luiza both face debt constraints plus relatively low OCF, which strains expansions if conditions worsen.</p>
+      <p><strong>3. Industry Norms</strong><br>
+      - Many large retailers aim for ~1–2x Debt/EBITDA and ~2–5% net margins as a safe zone.<br>
+      - <strong>Walmart</strong> stays comfortably in these bounds.<br>
+      - <strong>Costco</strong> surpasses typical efficiency norms (membership loyalty).<br>
+      - <strong>Alibaba</strong> outperforms typical margins, but intangible/regulatory aspects complicate risk.<br>
+      - <strong>Carrefour</strong> lags in margin stability, edging it closer to BBB territory.<br>
+      - <strong>Mag. Luiza</strong> sits below healthy thresholds (leverage ~3.6x, net margin ~0.6%), consistent with a BB- credit stance.
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 9 -->
+  <div class="slide">
+    <h2 class="section-title">SLIDE 9: Conclusion &amp; Final Credit Outlook</h2>
+    <table>
+      <tr>
+        <th>Firm</th>
+        <th>Altman Z</th>
+        <th>Merton (DD)</th>
+        <th>Credit Rating</th>
+        <th>Overall Conclusion</th>
+      </tr>
+      <tr>
+        <td>Walmart</td>
+        <td>5.16</td>
+        <td>13.09</td>
+        <td>AA / Aa2</td>
+        <td>Minimal structural &amp; short-term risk =&gt; convergent, safe</td>
+      </tr>
+      <tr>
+        <td>Costco</td>
+        <td>9.64</td>
+        <td>15.23</td>
+        <td>A+ / A1</td>
+        <td>Rarely high Z, near zero default =&gt; fully aligns w/ rating</td>
+      </tr>
+      <tr>
+        <td>Alibaba</td>
+        <td>2.80</td>
+        <td>4.75</td>
+        <td>A+ / A1</td>
+        <td>Structural caution, but intangible brand &amp; liquidity =&gt; moderate</td>
+      </tr>
+      <tr>
+        <td>Carrefour</td>
+        <td>1.91</td>
+        <td>4.58</td>
+        <td>BBB / Baa1</td>
+        <td>Short-term coverage offsets poor altman =&gt; rating is balanced</td>
+      </tr>
+      <tr>
+        <td>Mag. Luiza</td>
+        <td>1.42</td>
+        <td>2.12</td>
+        <td>BB- / Ba3</td>
+        <td>Distressed metrics, high interest environment =&gt; rating spot on</td>
+      </tr>
+    </table>
+
+    <div class="speaker-notes">
+      <p><strong>1. Synthesis</strong><br>
+      - Walmart &amp; Costco: Both altman and merton confirm minimal default risk; rating agencies’ high grades (AA, A+) converge with these models.<br>
+      - Alibaba: Shows a moderate mismatch—A+ vs. a 2.80 altman. Rating agencies emphasize intangible brand value, large liquidity, overshadowing structural signals.<br>
+      - Carrefour: Converges moderately with BBB; near-zero immediate default from Merton but altman suggests deeper fragility if macro or cost shocks occur.<br>
+      - Mag. Luiza: Z=1.42, Merton=2.12 → high risk, matching the BB- rating (speculative).</p>
+
+      <p><strong>2. Integrating Rating Methodology, ESG, &amp; Macro</strong><br>
+      - Agencies often prioritize free cash flow or intangible brand equity. For instance, Alibaba’s brand strength helps maintain A+ despite a downward-trending altman.<br>
+      - ESG factors: Walmart invests in sustainable supply chains; Carrefour has carbon-reduction targets. When effective, ESG can reduce long-term operational risks and stabilize credit profiles.<br>
+      - Macroeconomic cycles (e.g., 2019–2024 disruptions, US–China tensions, high Brazilian rates) shaped expansions for Mag. Luiza or regulatory pressures for Alibaba. Ratings weigh if these shocks are transitory or structural.</p>
+
+      <p><strong>3. Final Observations</strong><br>
+      - Safe Investment Grade: Walmart, Costco’s minimal risk confirmed by strong altman, stable debt metrics, synergy with the US market.<br>
+      - Moderate Outlook: Alibaba’s intangible strengths keep A+ afloat, but altman signals caution; Carrefour’s short-term liquidity anchors BBB despite low structural scores.<br>
+      - High Distress: Magazine Luiza’s expansions in a volatile environment hamper default metrics, consistent with BB- speculation.
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 10 -->
+  <div class="slide">
+    <h2 class="section-title">SLIDE 10: Heatmap Comparative Overview</h2>
+    <table>
+      <tr>
+        <th>Company</th>
+        <th>Altman Z</th>
+        <th>Merton (DD)</th>
+        <th>Current Ratio</th>
+        <th>Net Margin</th>
+      </tr>
+      <!-- Walmart -->
+      <tr>
+        <td>Walmart</td>
+        <td class="heatmap-high">5.16</td>
+        <td class="heatmap-high">13.09</td>
+        <td class="heatmap-medium">0.83</td>
+        <td class="heatmap-medium">2.4%</td>
+      </tr>
+      <!-- Costco -->
+      <tr>
+        <td>Costco</td>
+        <td class="heatmap-high">9.64</td>
+        <td class="heatmap-high">15.23</td>
+        <td class="heatmap-medium">1.05</td>
+        <td class="heatmap-medium">2.5%</td>
+      </tr>
+      <!-- Alibaba -->
+      <tr>
+        <td>Alibaba</td>
+        <td class="heatmap-medium">2.80</td>
+        <td class="heatmap-medium">4.75</td>
+        <td class="heatmap-high">2.1</td>
+        <td class="heatmap-high">13.6%</td>
+      </tr>
+      <!-- Carrefour -->
+      <tr>
+        <td>Carrefour</td>
+        <td class="heatmap-low">1.91</td>
+        <td class="heatmap-medium">4.58</td>
+        <td class="heatmap-medium">0.92</td>
+        <td class="heatmap-low">1.2%</td>
+      </tr>
+      <!-- Magazine Luiza -->
+      <tr>
+        <td>Mag. Luiza</td>
+        <td class="heatmap-low">1.42</td>
+        <td class="heatmap-low">2.12</td>
+        <td class="heatmap-medium">1.2</td>
+        <td class="heatmap-low">0.6%</td>
+      </tr>
+    </table>
+
+    <div class="speaker-notes">
+      <p><strong>Heatmap Explanation</strong><br>
+      - <span style="background-color:#c9f7c1;">Green</span> indicates a relatively high-performing or safe metric (e.g., Altman &gt;4, Merton &gt;10, CR &gt;1.5, Net margin &gt;5%).<br>
+      - <span style="background-color:#fff9c4;">Yellow</span> shows moderate or borderline figures.<br>
+      - <span style="background-color:#ffcfcf;">Red</span> highlights a distressing or risk-laden metric.
+      </p>
+      <p>
+        In this slide, we see <strong>Walmart</strong> and <strong>Costco</strong> firmly in the green zone for Altman and Merton, though their current ratios are moderate. This synergy supports their top-tier credit ratings. 
+        <strong>Alibaba</strong> has moderate structural metrics yet strong liquidity and net margin, reflecting intangible brand influence. 
+        <strong>Carrefour</strong> shows weaker altman and margin, but moderate Merton and CR to manage near-term obligations. 
+        <strong>Mag. Luiza</strong> is near risk thresholds across multiple metrics, reinforcing its high-risk credit category.
+      </p>
+      <p>
+        This table consolidates each firm’s structural (Altman), market-driven (Merton), liquidity (CR), and profitability (Net Margin) measures into one visual reference. 
+        It highlights why <strong>Walmart</strong> and <strong>Costco</strong> remain investment-grade (safe synergy), 
+        how <strong>Alibaba</strong> balances moderate caution with strong brand and liquidity, 
+        why <strong>Carrefour</strong> sustains a moderate BBB rating through short-term coverage, 
+        and how <strong>Mag. Luiza</strong> reflects speculative distress in a volatile Brazilian context.
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>
