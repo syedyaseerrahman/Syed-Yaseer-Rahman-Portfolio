@@ -1,5 +1,5 @@
-# AI-Assisted Risk Scenario Explainer (Groq fixed)
-# Deterministic stats + Groq Llama 3 narrative, with robust download handling.
+# AI-Assisted Risk Scenario Explainer — Groq version (portfolio-ready)
+# Deterministic statistics + Llama 3 narrative (free) with a safe template fallback.
 
 import os
 import io
@@ -14,17 +14,35 @@ try:
 except Exception:
     Groq = None
 
+# ------------------ Page config ------------------
 st.set_page_config(page_title="Risk Scenario Explainer", page_icon="📊", layout="wide")
 st.title("AI-Assisted Risk Scenario Explainer")
-st.caption("Deterministic risk statistics + Groq Llama 3 for a management-ready narrative.")
+st.caption("Deterministic risk statistics + Groq Llama 3 for a management-ready narrative. Upload non-confidential data only.")
+
+# Small how-to nudge
+with st.expander("How to use (quick)"):
+    st.write(
+        "1) Enter summary stats **or** upload a CSV with a single numeric KPI column.\n"
+        "2) Check the computed percentiles, worst case, and breach probability.\n"
+        "3) Click **Generate summary** to produce an executive summary, drivers and actions.\n"
+        "Tip: For downside risk, a breach occurs when KPI ≤ threshold."
+    )
 
 # ------------------ Sidebar inputs ------------------
 with st.sidebar:
     st.header("Scenario inputs")
+
+    # Model selector (future-proof, defaults to a current Groq model)
+    model_id = st.text_input(
+        "Groq model",
+        value="llama-3.1-70b-versatile",
+        help="If this model is deprecated later, paste another from Groq Console (e.g., llama-3.1-8b-instant)."
+    )
+
     scenario = st.text_input("Scenario name", "Supply Chain Disruption")
     metric = st.text_input("Metric (e.g., EBITDA £m)", "EBITDA (£m)")
     trials = st.number_input("Number of trials (if known)", min_value=0, value=10000, step=1000)
-    threshold = st.number_input("Threshold for breach", value=85.0)
+    threshold = st.number_input("Threshold for breach", value=85.0, help="For downside risk, a breach is KPI ≤ threshold.")
     breach_logic = st.selectbox("Breach when metric is…", ["≤ threshold (downside)", "≥ threshold (upside)"])
     drivers = st.text_area("Key drivers (ranked by variance contribution)", "Demand 45%, FX 30%, Input cost 25%")
     mitigations = st.text_area("Mitigation options under consideration", "Hedge 50%, Dual supplier, Price adjustment")
@@ -46,7 +64,8 @@ with st.expander("Enter summary statistics", expanded=True):
         prob_breach_manual = st.number_input("P(breach) % (manual)", value=10.0, min_value=0.0, max_value=100.0)
 
 # ------------------ CSV upload route ------------------
-uploaded = st.file_uploader("Upload CSV of simulated KPI outcomes (one numeric column)", type=["csv"])
+st.write("**Upload CSV with one numeric KPI column (e.g., EBITDA).**")
+uploaded = st.file_uploader("Upload CSV", type=["csv"])
 prob_breach_calc = None
 arr = None
 selected_col = None
@@ -75,6 +94,15 @@ if uploaded:
                 st.error("Selected column has no numeric data.")
     except Exception as e:
         st.error(f"Failed to read CSV: {e}")
+
+# Provide a quick sample CSV for testers
+with st.expander("Need a sample CSV?"):
+    st.write("Download a synthetic sample (1,000 draws, roughly N(100, 10)) with column name `KPI`.")
+    rng = np.random.default_rng(42)
+    sample = pd.DataFrame({"KPI": rng.normal(loc=100, scale=10, size=1000)})
+    sample_buf = io.StringIO()
+    sample.to_csv(sample_buf, index=False)
+    st.download_button("Download sample_outcomes.csv", data=sample_buf.getvalue(), file_name="sample_outcomes.csv", mime="text/csv")
 
 # choose manual vs computed breach probability
 prob_breach = prob_breach_calc if prob_breach_calc is not None else prob_breach_manual
@@ -105,10 +133,10 @@ if arr is not None and arr.size > 0:
 # ------------------ Deterministic risk rating ------------------
 def risk_rating(prob, p5_val, p95_val, threshold_val, downside=True):
     """
-    Simple, defensible rules:
-    - High if P(breach) >= 20% OR (downside and P5 < threshold) OR (upside and P95 > threshold)
-    - Medium if 5% <= P(breach) < 20%
-    - Low if P(breach) < 5% AND (downside: P5 >= threshold) / (upside: P95 <= threshold)
+    Defensible rules:
+      High   if P(breach) >= 20% OR (downside and P5 < threshold) OR (upside and P95 > threshold)
+      Medium if 5% <= P(breach) < 20%
+      Low    if P(breach) < 5% AND (downside: P5 >= threshold) / (upside: P95 <= threshold)
     """
     if downside:
         if prob >= 20 or p5_val < threshold_val:
@@ -127,6 +155,17 @@ def risk_rating(prob, p5_val, p95_val, threshold_val, downside=True):
 
 downside = "≤" in breach_logic
 rating = risk_rating(prob_breach, p5, p95, threshold, downside)
+
+# Show a colored status chip
+rating_color = {"High": "#d9534f", "Medium": "#f0ad4e", "Low": "#5cb85c"}[rating]
+st.markdown(
+    f"""<div style="margin:8px 0 0 0;">
+        <span style="background:{rating_color}; color:white; padding:6px 10px; border-radius:16px; font-weight:600;">
+        Risk rating: {rating}
+        </span>
+    </div>""",
+    unsafe_allow_html=True,
+)
 
 # ------------------ Groq client + prompt ------------------
 def get_groq_client():
@@ -171,13 +210,13 @@ Write:
 Keep it specific and concise. Avoid buzzwords and filler.
 """
 
-def llm_summarise(prompt_text: str):
+def llm_summarise(prompt_text: str, model_name: str):
     client, err = get_groq_client()
     if err:
         return None, err
     try:
         resp = client.chat.completions.create(
-            model="llama3-70b-8192",   # UPDATED: current Groq model id
+            model=model_name,                      # user-selectable model
             messages=[{"role": "user", "content": prompt_text}],
             temperature=0.2,
             max_tokens=700,
@@ -202,7 +241,7 @@ def template_summary():
 st.markdown("### 3) Generate AI narrative")
 if st.button("Generate summary"):
     prompt = build_prompt()
-    text, err = llm_summarise(prompt)
+    text, err = llm_summarise(prompt, model_id)
     if err:
         st.warning(f"LLM unavailable ({err}). Showing deterministic template instead.")
         text = template_summary()
@@ -210,7 +249,7 @@ if st.button("Generate summary"):
     st.markdown("#### AI-generated summary")
     st.write(text)
 
-    # Build a markdown download that doesn't rely on external deps
+    # Download as Markdown (robust even if tabulate is missing)
     table_md = stats_df.to_markdown(index=False) if hasattr(stats_df, "to_markdown") else stats_df.to_csv(index=False)
     md = f"# {scenario} — Risk Scenario Summary\n\n{table_md}\n\n---\n\n{text}"
     st.download_button(
