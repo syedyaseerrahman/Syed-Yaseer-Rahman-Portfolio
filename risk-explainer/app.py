@@ -35,7 +35,7 @@ with st.sidebar:
     # Model selector (future-proof, defaults to a current Groq model)
     model_id = st.text_input(
         "Groq model",
-        value="llama-3.1-70b-versatile",
+        value="moonshotai/kimi-k2-instruct-0905",
         help="If this model is deprecated later, paste another from Groq Console (e.g., llama-3.1-8b-instant)."
     )
 
