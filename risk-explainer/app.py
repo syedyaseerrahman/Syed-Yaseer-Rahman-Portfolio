@@ -1,7 +1,8 @@
-# AI-Assisted Risk Scenario Explainer (Groq version)
-# Free + reliable: deterministic risk stats + Llama 3 narrative with template fallback.
+# AI-Assisted Risk Scenario Explainer (Groq fixed)
+# Deterministic stats + Groq Llama 3 narrative, with robust download handling.
 
 import os
+import io
 import numpy as np
 import pandas as pd
 import streamlit as st
@@ -13,10 +14,9 @@ try:
 except Exception:
     Groq = None
 
-# ------------------ Page config ------------------
 st.set_page_config(page_title="Risk Scenario Explainer", page_icon="📊", layout="wide")
 st.title("AI-Assisted Risk Scenario Explainer")
-st.caption("Deterministic risk statistics + Groq Llama 3 for management-ready narrative (no OpenAI billing required).")
+st.caption("Deterministic risk statistics + Groq Llama 3 for a management-ready narrative.")
 
 # ------------------ Sidebar inputs ------------------
 with st.sidebar:
@@ -177,7 +177,7 @@ def llm_summarise(prompt_text: str):
         return None, err
     try:
         resp = client.chat.completions.create(
-            model="llama-3.1-70b-versatile",  # quality + free
+            model="llama3-70b-8192",   # UPDATED: current Groq model id
             messages=[{"role": "user", "content": prompt_text}],
             temperature=0.2,
             max_tokens=700,
@@ -210,7 +210,9 @@ if st.button("Generate summary"):
     st.markdown("#### AI-generated summary")
     st.write(text)
 
-    md = f"# {scenario} — Risk Scenario Summary\n\n" + stats_df.to_markdown(index=False) + "\n\n---\n\n" + text
+    # Build a markdown download that doesn't rely on external deps
+    table_md = stats_df.to_markdown(index=False) if hasattr(stats_df, "to_markdown") else stats_df.to_csv(index=False)
+    md = f"# {scenario} — Risk Scenario Summary\n\n{table_md}\n\n---\n\n{text}"
     st.download_button(
         "Download as Markdown",
         data=md.encode("utf-8"),
@@ -218,4 +220,4 @@ if st.button("Generate summary"):
         mime="text/markdown",
     )
 
-st.info("This app is free to use. Accuracy comes from deterministic statistics; Groq Llama 3 provides narrative polish. If the API is unavailable, a template summary is shown.")
+st.info("Free to use. Accuracy comes from deterministic statistics; Groq Llama 3 provides narrative polish. Template fallback ensures continuity.")
