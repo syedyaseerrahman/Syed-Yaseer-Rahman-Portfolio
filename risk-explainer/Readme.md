@@ -68,3 +68,46 @@ This makes the output suitable for decision-makers who need insight, not raw num
 
 When the user clicks **Generate Summary**, the app sends a structured prompt to the AI model, such as:
 
+## How to Use the App
+
+The application is publicly hosted and runs entirely in your web browser.
+
+👉 **Open the live app:**  
+https://syed-yaseer-rahman-portfolio-risk-explainer.streamlit.app/
+
+No installation, coding, or GitHub access is required.
+
+### Step 1 — Define the Scenario
+Use the sidebar to enter:
+
+- Scenario name
+- Metric (e.g., EBITDA)
+- Breach threshold
+- Risk appetite
+- Key risk drivers
+
+### Step 2 — Provide Simulation Results
+
+Choose one option:
+
+**Option A — Manual input**  
+Enter summary statistics such as Mean, P5, P50, P95, and breach probability.
+
+**Option B — Upload CSV**  
+Upload a CSV file containing simulation outcomes (one numeric column).  
+The app automatically calculates risk statistics.
+
+### Step 3 — Generate AI Summary
+
+Click **“Generate Summary”** to produce:
+
+- Executive risk summary
+- Driver interpretation
+- Mitigation recommendations
+- Board-ready conclusion
+
+### Step 4 — Download the Report
+
+Download the output as a Markdown file suitable for management reporting.
+
+> ⚠️ Please use non-confidential data only. AI summaries are generated via a third-party language model.
