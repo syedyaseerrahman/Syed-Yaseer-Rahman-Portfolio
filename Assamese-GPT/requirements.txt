@@ -1,1 +1,19 @@
+# Assamese GPT — AI System Requirements
 
+# LLM API communication
+openai
+
+# Data handling and knowledge base management
+pandas
+
+# Environment variable management
+python-dotenv
+
+# Semantic search and vector retrieval (RAG architecture)
+faiss-cpu
+
+# Web interface (future deployment)
+streamlit
+
+# Text processing
+numpy
