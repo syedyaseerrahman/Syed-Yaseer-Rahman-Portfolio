@@ -1,2 +1,2 @@
 # Syed-Yaseer-Rahman-Portfolio
-Selected projects covering credit risk modelling (PD, LGD, EAD), variance reporting automation, financial forecasting and governance frameworks.
+Portfolio of financial risk, quantitative modelling, and AI/ML applications, including an LLM-powered risk intelligence platform and a retrieval-augmented multilingual GPT system.
