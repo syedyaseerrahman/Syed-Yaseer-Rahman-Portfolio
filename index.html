@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Syed Yaseer Rahman</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B1D26;
+    --bg: #F7F5F0;
+    --clay: #C4622D;
+    --sage: #4A5D52;
+    --text: #1A1A1A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  h1, h2, h3 { font-family: 'Fraunces', serif; font-weight: 500; color: var(--navy); }
+  a { color: var(--clay); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  #grid-bg {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+    pointer-events: none;
+  }
+  #grid-bg svg { width: 100%; height: 100%; }
+  .grid-line {
+    stroke: var(--navy);
+    stroke-width: 0.6;
+    opacity: 0.06;
+    transition: all 1.2s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  section {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 100px 32px;
+  }
+  @media (max-width: 640px) {
+    section { padding: 64px 24px; }
+  }
+
+  .hero {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 820px;
+  }
+  .hero-photo {
+    width: 92px; height: 92px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 28px;
+    border: 2px solid var(--navy);
+  }
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+  .hero .tagline {
+    font-size: 1.15rem;
+    color: var(--sage);
+    font-weight: 500;
+    max-width: 540px;
+  }
+  .hero .role-line {
+    margin-top: 24px;
+    font-size: 0.95rem;
+    color: var(--text);
+    opacity: 0.7;
+  }
+
+  .kicker {
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--clay);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); margin-bottom: 28px; }
+
+  .story p { margin-bottom: 20px; font-size: 1.05rem; }
+  .story p:last-child { margin-bottom: 0; }
+
+  .projects { display: flex; flex-direction: column; gap: 28px; }
+  .project-card {
+    background: #fff;
+    border: 1px solid rgba(11,29,38,0.08);
+    border-left: 3px solid var(--clay);
+    padding: 28px 30px;
+    border-radius: 4px;
+  }
+  .project-card.in-progress { border-left-color: var(--sage); }
+  .project-title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .project-card h3 { font-size: 1.2rem; margin: 0; }
+  .status-tag {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
+    background: rgba(74,93,82,0.12);
+    color: var(--sage);
+  }
+  .project-card p { font-size: 0.98rem; margin-bottom: 12px; }
+  .project-card p:last-of-type { margin-bottom: 0; }
+  .project-link { font-size: 0.9rem; font-weight: 500; }
+
+  .interests-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 32px;
+  }
+  @media (max-width: 640px) {
+    .interests-grid { grid-template-columns: 1fr; }
+  }
+  .interest-item h3 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+    color: var(--navy);
+  }
+  .interest-item p { font-size: 0.93rem; color: var(--text); opacity: 0.85; }
+
+  footer {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 60px 32px 100px;
+    text-align: left;
+  }
+  footer h2 { margin-bottom: 16px; }
+  .contact-links {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  .footer-note {
+    margin-top: 40px;
+    font-size: 0.85rem;
+    color: var(--sage);
+    opacity: 0.8;
+  }
+</style>
+</head>
+<body>
+
+<div id="grid-bg"><svg id="grid-svg" preserveAspectRatio="none"></svg></div>
+
+<section class="hero">
+  <img class="hero-photo" src="YOUR_PHOTO.jpg" alt="Syed Yaseer Rahman" onerror="this.style.display='none'">
+  <h1>I work across operations, delivery, and analysis, doing whatever the role actually needs, from hands-on execution to coordinating teams and improving how things run.</h1>
+  <p class="tagline">Operations, delivery, and analysis, across financial services and beyond.</p>
+  <p class="role-line">Syed Yaseer Rahman &middot; Bengaluru, India</p>
+</section>
+
+<section class="story">
+  <p class="kicker">Where I'm Headed</p>
+  <h2>Moving into financial services</h2>
+  <p>I'm changing industries into financial services. My five years span operations, delivery, and governance work across EdTech and adjacent operational environments, not within financial services directly. That's why I'm applying to associate-level roles to build that experience directly, alongside more senior operations and delivery roles where my existing experience already applies.</p>
+  <p>MSc Financial Risk Management (Distinction), Queen's University Belfast. GARP FRM Part 1 Scholarship recipient.</p>
+</section>
+
+<section class="story">
+  <p class="kicker">The Story</p>
+  <h2>How I work, in practice</h2>
+  <p>I joined an EdTech company in Bengaluru at a point where growth had outpaced process. Reporting lived in scattered spreadsheets, exceptions piled up faster than anyone could track them, and nobody had time to fix the machine while running it. I built a KPI governance framework to change that. Starting small, on four projects, then scaling it across more than twenty. It cut delivery exceptions from over 20 per cycle to under 5, and it gave the organisation back more than 600 hours a year that used to disappear into manual reporting.</p>
+  <p>The work went beyond the system itself. I coordinated with team leads and developers to keep it running day to day, led and mentored a small team, and worked directly with client accounts, from pitch materials through to ongoing relationship management. I also tracked variance and root-cause analysis that fed into real capital and resourcing decisions. In a UK contract role since, I've applied the same attention to reconciliation and discrepancy investigation, keeping operational records accurate to a strict standard.</p>
+  <p>The same instinct shows up outside of work too. I build small tools for myself when something repetitive is wasting time, including a daily Gmail digest that summarises what actually needs my attention each morning, because sorting an inbox by hand felt like exactly the kind of problem worth solving properly.</p>
+  <p>I'm currently looking for roles in operations, program coordination, delivery, and analysis, wherever the work is real and hands-on.</p>
+</section>
+
+<section class="projects">
+  <p class="kicker">What I've Built</p>
+  <h2>Selected work</h2>
+  <div class="projects">
+
+    <div class="project-card">
+      <div class="project-title-row">
+        <h3>KPI Governance Framework</h3>
+      </div>
+      <p>A reporting and exception-tracking system built from scratch for a fast-growing EdTech operation. Scaled from a 4-project pilot to 21+ concurrent projects, cutting delivery exceptions by over 75% and eliminating 600+ hours of manual reporting annually.</p>
+    </div>
+
+    <div class="project-card">
+      <div class="project-title-row">
+        <h3>AI-Assisted Risk Scenario Explainer</h3>
+      </div>
+      <p>A web application that converts Monte Carlo simulation outputs into structured, decision-ready risk narratives, integrating breach probability and variance drivers through Python, Streamlit, and an AI language model API.</p>
+      <a class="project-link" href="https://github.com/syedyaseerrahman/syedyaseerrahman.github.io/tree/main/risk-explainer" target="_blank">View on GitHub &rarr;</a>
+    </div>
+
+    <div class="project-card in-progress">
+      <div class="project-title-row">
+        <h3>Assamese-GPT</h3>
+        <span class="status-tag">In Progress</span>
+      </div>
+      <p>A domain-restricted, Assamese-language AI assistant for UPSC and state public service exam preparation, built on a retrieval-augmented generation (RAG) architecture so responses stay grounded in real syllabus material rather than general model knowledge.</p>
+      <p>Most AI tools assume English fluency, which quietly excludes a large number of capable regional-language students from the same learning tools everyone else has access to. This project is an attempt to close that gap. Currently in active development, with the retrieval pipeline and knowledge base under construction.</p>
+      <a class="project-link" href="https://github.com/syedyaseerrahman/syedyaseerrahman.github.io/tree/main/Assamese-GPT" target="_blank">View on GitHub &rarr;</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-title-row">
+        <h3>Daily Gmail Digest</h3>
+      </div>
+      <p>A small self-built automation that summarises the inbox into what actually needs attention each morning, built because sorting email by hand felt like exactly the kind of repetitive problem worth automating rather than repeating daily.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="interests">
+  <p class="kicker">Outside of Work</p>
+  <h2>A few other things</h2>
+  <div class="interests-grid">
+    <div class="interest-item">
+      <h3>Writing &amp; Music</h3>
+      <p>Two creative outlets I keep coming back to, mostly for myself.</p>
+    </div>
+    <div class="interest-item">
+      <h3>History &amp; Non-fiction</h3>
+      <p>Most of what I read outside of work isn't fiction. I'd rather understand how something real actually happened.</p>
+    </div>
+    <div class="interest-item">
+      <h3>Travel, Food &amp; Culture</h3>
+      <p>All three at once, usually, new places are more interesting through their food and everyday culture than their landmarks.</p>
+    </div>
+    <div class="interest-item">
+      <h3>Strategy Games &amp; Esports</h3>
+      <p>Strategy and story-driven games mostly, with a genuine interest in competitive esports.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="kicker">Get in Touch</p>
+  <h2>Let's talk</h2>
+  <p>Open to operations, program coordination, and delivery-focused roles, at organisations of any size or stage.</p>
+  <div class="contact-links">
+    <a href="mailto:syed.yaseer.rahman@gmail.com">Email</a>
+    <a href="https://linkedin.com/in/syedyaseerrahman" target="_blank">LinkedIn</a>
+    <a href="https://github.com/syedyaseerrahman" target="_blank">GitHub</a>
+  </div>
+  <p class="footer-note">Bengaluru, India</p>
+</footer>
+
+<script>
+  // Generate scattered grid lines that resolve into an aligned grid on scroll
+  const svg = document.getElementById('grid-svg');
+  const NS = 'http://www.w3.org/2000/svg';
+  const lineCount = 14;
+  const lines = [];
+
+  function rand(min, max) { return Math.random() * (max - min) + min; }
+
+  for (let i = 0; i < lineCount; i++) {
+    const line = document.createElementNS(NS, 'line');
+    line.setAttribute('class', 'grid-line');
+    svg.appendChild(line);
+    lines.push({
+      el: line,
+      scatterX1: rand(0, 100), scatterY1: rand(0, 100),
+      scatterX2: rand(0, 100), scatterY2: rand(0, 100),
+      gridPos: (i / lineCount) * 100,
+      vertical: i % 2 === 0
+    });
+  }
+
+  function render(progress) {
+    // progress: 0 (scattered) -> 1 (aligned grid)
+    lines.forEach((l) => {
+      const gx = l.vertical ? l.gridPos : 0;
+      const gy = l.vertical ? 0 : l.gridPos;
+      const gx2 = l.vertical ? l.gridPos : 100;
+      const gy2 = l.vertical ? 100 : l.gridPos;
+
+      const x1 = l.scatterX1 + (gx - l.scatterX1) * progress;
+      const y1 = l.scatterY1 + (gy - l.scatterY1) * progress;
+      const x2 = l.scatterX2 + (gx2 - l.scatterX2) * progress;
+      const y2 = l.scatterY2 + (gy2 - l.scatterY2) * progress;
+
+      l.el.setAttribute('x1', x1 + '%');
+      l.el.setAttribute('y1', y1 + '%');
+      l.el.setAttribute('x2', x2 + '%');
+      l.el.setAttribute('y2', y2 + '%');
+    });
+  }
+
+  render(0);
+
+  function onScroll() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = Math.min(Math.max(scrollTop / (docHeight * 0.55), 0), 1);
+    render(progress);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', () => onScroll());
+</script>
+
+</body>
+</html>
